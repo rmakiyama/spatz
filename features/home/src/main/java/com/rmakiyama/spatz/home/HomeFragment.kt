@@ -1,13 +1,13 @@
 package com.rmakiyama.spatz.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import com.rmakiyama.spatz.domain.model.Tweet
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -20,6 +20,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun updateTweetList(tweets: List<Tweet>) {
-        Log.d("TAG", "updateTweetList: ${tweets.size}")
+        Timber.d("updateTweetList: ${tweets.size}")
     }
 }

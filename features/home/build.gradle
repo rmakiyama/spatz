@@ -9,6 +9,7 @@ apply from: '../../test_dependencies.gradle'
 
 dependencies {
     implementation project(':domain')
+    implementation project(':core')
 
     // kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"

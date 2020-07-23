@@ -16,4 +16,6 @@ dependencies {
     implementation "androidx.activity:activity-ktx:${versions.activityKtx}"
     implementation "androidx.fragment:fragment-ktx:${versions.fragmentKtx}"
     implementation "androidx.appcompat:appcompat:${versions.appcompat}"
+
+    api 'com.jakewharton.timber:timber:4.7.1'
 }
