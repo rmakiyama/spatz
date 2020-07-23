@@ -28,6 +28,10 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:${versions.navigation}"
     implementation "com.google.android.material:material:${versions.mdc}"
 
+    implementation "io.coil-kt:coil:${versions.coil}"
+    implementation "com.xwray:groupie:${versions.groupie}"
+    implementation "com.xwray:groupie-databinding:${versions.groupie}"
+
     // dependency injection
     implementation "com.google.dagger:hilt-android:${versions.hilt}"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:${versions.hiltJetpack}"

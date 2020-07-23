@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.rmakiyama.spatz.domain.model.Tweet
+import com.rmakiyama.spatz.domain.model.tweet.Tweet
 import com.rmakiyama.spatz.domain.usecase.GetTweetsUseCase
 import kotlinx.coroutines.launch
 

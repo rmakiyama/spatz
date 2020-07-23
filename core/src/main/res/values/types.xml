@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextAppearance.spatz.Headline1" parent="TextAppearance.MaterialComponents.Headline1" />
+
+    <style name="TextAppearance.spatz.Headline2" parent="TextAppearance.MaterialComponents.Headline2" />
+
+    <style name="TextAppearance.spatz.Headline3" parent="TextAppearance.MaterialComponents.Headline3" />
+
+    <style name="TextAppearance.spatz.Headline4" parent="TextAppearance.MaterialComponents.Headline4" />
+
+    <style name="TextAppearance.spatz.Headline5" parent="TextAppearance.MaterialComponents.Headline5" />
+
+    <style name="TextAppearance.spatz.Headline6" parent="TextAppearance.MaterialComponents.Headline6" />
+
+    <style name="TextAppearance.spatz.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1" />
+
+    <style name="TextAppearance.spatz.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2" />
+
+    <style name="TextAppearance.spatz.Body1" parent="TextAppearance.MaterialComponents.Body1" />
+
+    <style name="TextAppearance.spatz.Body2" parent="TextAppearance.MaterialComponents.Body2" >
+        <item name="lineHeight">19sp</item>
+    </style>
+
+    <style name="TextAppearance.spatz.Button" parent="TextAppearance.MaterialComponents.Button" />
+
+    <style name="TextAppearance.spatz.Caption" parent="TextAppearance.MaterialComponents.Caption" />
+
+    <style name="TextAppearance.spatz.Overline" parent="TextAppearance.MaterialComponents.Overline" />
+
+</resources>
