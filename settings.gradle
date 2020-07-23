@@ -1,2 +1,6 @@
+include ':core'
+include ':data'
+include ':domain'
+include ':features:home'
 include ':app'
 rootProject.name = "Spatz"

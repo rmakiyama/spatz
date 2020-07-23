@@ -1,22 +1,14 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
 }
-apply from: '../app_config.gradle'
-apply from: '../test_dependencies.gradle'
-
-android {
-    defaultConfig {
-        applicationId "com.rmakiyama.spatz"
-    }
-}
+apply from: '../../app_config.gradle'
+apply from: '../../test_dependencies.gradle'
 
 dependencies {
-    implementation project(':features:home')
     implementation project(':domain')
-    implementation project(':data')
     implementation project(':core')
 
     // kotlin
@@ -35,10 +27,6 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:${versions.navigation}"
     implementation "androidx.navigation:navigation-ui-ktx:${versions.navigation}"
     implementation "com.google.android.material:material:${versions.mdc}"
-
-    implementation "io.coil-kt:coil:${versions.coil}"
-    implementation "com.xwray:groupie:${versions.groupie}"
-    implementation "com.xwray:groupie-databinding:${versions.groupie}"
 
     // dependency injection
     implementation "com.google.dagger:hilt-android:${versions.hilt}"
