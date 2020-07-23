@@ -1,6 +1,6 @@
 package com.rmakiyama.spatz.domain.usecase
 
-import com.rmakiyama.spatz.domain.model.Tweet
+import com.rmakiyama.spatz.domain.model.tweet.Tweet
 import com.rmakiyama.spatz.domain.repository.TweetRepository
 import javax.inject.Inject
 

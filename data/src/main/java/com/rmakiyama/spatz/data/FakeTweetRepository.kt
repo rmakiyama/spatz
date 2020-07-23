@@ -1,8 +1,8 @@
 package com.rmakiyama.spatz.data
 
-import com.rmakiyama.spatz.domain.model.Tweet
-import com.rmakiyama.spatz.domain.model.TweetId
-import com.rmakiyama.spatz.domain.model.TweetText
+import com.rmakiyama.spatz.domain.model.tweet.Tweet
+import com.rmakiyama.spatz.domain.model.tweet.TweetId
+import com.rmakiyama.spatz.domain.model.tweet.TweetText
 import com.rmakiyama.spatz.domain.repository.TweetRepository
 import javax.inject.Inject
 
