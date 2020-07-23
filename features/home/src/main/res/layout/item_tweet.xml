@@ -16,6 +16,7 @@
         app:layout_constraintEnd_toStartOf="@id/user_name"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
         app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.spatz.half"
         tools:src="@tools:sample/avatars" />
 
     <com.google.android.material.textview.MaterialTextView
