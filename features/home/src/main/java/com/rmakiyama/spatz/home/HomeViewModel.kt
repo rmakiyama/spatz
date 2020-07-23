@@ -1,4 +1,4 @@
-package com.rmakiyama.spatz.ui.home
+package com.rmakiyama.spatz.home
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData

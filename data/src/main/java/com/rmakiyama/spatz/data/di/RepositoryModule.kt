@@ -1,4 +1,4 @@
-package com.rmakiyama.spatz.di
+package com.rmakiyama.spatz.data.di
 
 import com.rmakiyama.spatz.data.FakeTweetRepository
 import com.rmakiyama.spatz.domain.repository.TweetRepository

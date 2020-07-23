@@ -1,4 +1,4 @@
-package com.rmakiyama.spatz.di
+package com.rmakiyama.spatz.domain.di
 
 import com.rmakiyama.spatz.domain.usecase.GetTweetsUseCase
 import com.rmakiyama.spatz.domain.usecase.GetTweetsUseCaseImpl
@@ -12,7 +12,7 @@ import dagger.hilt.android.components.ActivityRetainedComponent
 abstract class UseCaseModule {
 
     @Binds
-    abstract fun bindGetTweetsUseCase(
+    internal abstract fun bindGetTweetsUseCase(
         analyticsServiceImpl: GetTweetsUseCaseImpl
     ): GetTweetsUseCase
 }
