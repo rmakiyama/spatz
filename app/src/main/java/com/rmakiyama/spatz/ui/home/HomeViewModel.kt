@@ -1,17 +1,17 @@
 package com.rmakiyama.spatz.ui.home
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rmakiyama.spatz.domain.model.Tweet
 import com.rmakiyama.spatz.domain.usecase.GetTweetsUseCase
-import com.rmakiyama.spatz.domain.usecase.GetTweetsUseCaseImpl
 import kotlinx.coroutines.launch
 
-internal class HomeViewModel : ViewModel() {
-
-    private val getTweets: GetTweetsUseCase = GetTweetsUseCaseImpl()
+internal class HomeViewModel @ViewModelInject constructor(
+    private val getTweets: GetTweetsUseCase
+) : ViewModel() {
 
     private val _tweet = MutableLiveData<List<Tweet>>()
     val tweet: LiveData<List<Tweet>> get() = _tweet
