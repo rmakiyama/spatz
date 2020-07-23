@@ -14,12 +14,13 @@ import javax.inject.Inject
 
 internal class FakeTweetRepository @Inject constructor() : TweetRepository {
 
+    @ExperimentalStdlibApi
     override suspend fun getTweets(): List<Tweet> {
         // TODO
-        return listOf(
+        val list = listOf(
             Tweet(
                 id = TweetId(value = "0"),
-                text = TweetText(value = "hello"),
+                text = TweetText(value = "RadiotalkではFragmentのthemeを切り替えちゃいたいときにもContextThemeWrapper使ってたりする\uD83D\uDC68\uD83C\uDFFB\u200D\uD83D\uDCBB\n画面単位で動的になときはViewをそれぞれ変えるよりthemeで制御したほうが楽かな〜と思ってやってるけど諸説ありそうなので各社の知見欲しい\uD83D\uDE4C\uD83C\uDFFB"),
                 user = User(
                     id = UserId(value = "1"),
                     name = UserName(value = "rmakiyama"),
@@ -36,7 +37,7 @@ internal class FakeTweetRepository @Inject constructor() : TweetRepository {
             ),
             Tweet(
                 id = TweetId(value = "1"),
-                text = TweetText(value = "world"),
+                text = TweetText(value = "あらためて「ドメイン駆動設計入門 」を読んでいる。ドメインサービスの見極めが難しそうだなあ。実コードに落とし込んでコネコネしたくなってる。"),
                 user = User(
                     id = UserId(value = "2"),
                     name = UserName(value = "rmakiyama2"),
@@ -53,7 +54,7 @@ internal class FakeTweetRepository @Inject constructor() : TweetRepository {
             ),
             Tweet(
                 id = TweetId(value = "2"),
-                text = TweetText(value = "!!!!!!!"),
+                text = TweetText(value = "File > New > New Project..."),
                 user = User(
                     id = UserId(value = "3"),
                     name = UserName(value = "rmakiyama3"),
@@ -69,5 +70,12 @@ internal class FakeTweetRepository @Inject constructor() : TweetRepository {
                 createdTimestamp = 1595501426
             )
         )
+        return buildList {
+            addAll(list)
+            addAll(list)
+            addAll(list)
+            addAll(list)
+            addAll(list)
+        }
     }
 }
