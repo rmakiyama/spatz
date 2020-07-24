@@ -45,6 +45,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun updateTweetList(tweets: List<Tweet>) {
-        timelineAdapter.update(tweets.map(::TweetItem))
+        timelineAdapter.update(tweets.map { tweet -> TweetItem(tweet, tweetClickListener) })
+    }
+
+    private val tweetClickListener = object : TweetItem.TweetOnClickListener {
+        override fun onClickUser(tweet: Tweet) {
+            findNavController().navigate(ScreenDestination.UserDetail.deeplink)
+        }
     }
 }
