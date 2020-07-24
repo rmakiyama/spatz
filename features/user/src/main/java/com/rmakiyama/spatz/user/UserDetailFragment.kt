@@ -7,6 +7,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import coil.api.load
+import com.google.android.material.transition.MaterialSharedAxis
+import com.google.android.material.transition.MaterialSharedAxis.Z
 import com.rmakiyama.spatz.domain.model.user.User
 import com.rmakiyama.spatz.user.databinding.FragmentUserDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -15,6 +17,12 @@ import dagger.hilt.android.AndroidEntryPoint
 class UserDetailFragment : Fragment(R.layout.fragment_user_detail) {
 
     private val viewModel: UserDetailViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enterTransition = MaterialSharedAxis(Z, true)
+        returnTransition = MaterialSharedAxis(Z, false)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

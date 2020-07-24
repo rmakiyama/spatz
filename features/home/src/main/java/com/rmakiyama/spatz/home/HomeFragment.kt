@@ -9,6 +9,7 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.transition.Hold
+import com.google.android.material.transition.MaterialSharedAxis
 import com.rmakiyama.spatz.core.destination.ScreenDestination
 import com.rmakiyama.spatz.domain.model.tweet.Tweet
 import com.rmakiyama.spatz.home.databinding.FragmentHomeBinding
@@ -39,6 +40,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun onClickTweetFab(view: View) {
         exitTransition = Hold()
+        reenterTransition = Hold()
         val fabToTweetTransitionName = getString(R.string.transition_name_fab_to_tweet)
         val extra = FragmentNavigatorExtras(view to fabToTweetTransitionName)
         findNavController().navigate(ScreenDestination.Tweet.deeplink, null, extra)
@@ -50,6 +52,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private val tweetClickListener = object : TweetItem.TweetOnClickListener {
         override fun onClickUser(tweet: Tweet) {
+            exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true)
+            reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false)
             findNavController().navigate(ScreenDestination.UserDetail(tweet.user.id).deeplink)
         }
     }
