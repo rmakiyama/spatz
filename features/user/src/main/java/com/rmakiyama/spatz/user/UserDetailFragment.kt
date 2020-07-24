@@ -1,11 +1,33 @@
 package com.rmakiyama.spatz.user
 
+import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
+import coil.api.load
+import com.rmakiyama.spatz.domain.model.user.User
+import com.rmakiyama.spatz.user.databinding.FragmentUserDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class UserDetailFragment : Fragment(R.layout.fragment_user_detail) {
 
     private val viewModel: UserDetailViewModel by viewModels()
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val binding = FragmentUserDetailBinding.bind(view)
+        binding.toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
+
+        viewModel.user.observe(viewLifecycleOwner) { user -> binding.applyUserData(user) }
+    }
+
+    private fun FragmentUserDetailBinding.applyUserData(user: User) {
+        userBannerImage.load(user.profileBannerUrl.value)
+        userImage.load(user.profilePhotoUrl.value)
+        userName.text = user.name.value
+        userDescription.text = user.description?.value
+    }
 }

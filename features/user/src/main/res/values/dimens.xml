@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="user_detail_profile_image_space">64dp</dimen>
+    <dimen name="user_detail_profile_image_size">128dp</dimen>
+</resources>
