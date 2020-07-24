@@ -1,3 +1,4 @@
+include ':features:user'
 include ':features:tweet'
 include ':core'
 include ':data'
