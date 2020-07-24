@@ -5,7 +5,7 @@ import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TweetFragment : Fragment(R.layout.tweet_fragment) {
+class TweetFragment : Fragment(R.layout.fragment_tweet) {
 
     private val viewModel: TweetViewModel by viewModels()
 }
