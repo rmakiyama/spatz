@@ -15,8 +15,6 @@
         android:clickable="true"
         android:focusable="true"
         android:scaleType="centerCrop"
-        android:tint="@android:color/transparent"
-        android:tintMode="src_in"
         app:layout_constraintEnd_toStartOf="@id/user_name"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
         app:layout_constraintTop_toTopOf="parent"

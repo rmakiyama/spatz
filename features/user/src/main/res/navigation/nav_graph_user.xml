@@ -7,9 +7,13 @@
     <fragment
         android:id="@+id/user_detail"
         android:name="com.rmakiyama.spatz.user.UserDetailFragment"
-        android:label="@string/screen_label_tweet"
+        android:label="@string/screen_label_user_detail"
         tools:layout="@layout/fragment_user_detail">
 
-        <deepLink app:uri="spatz://userdetail" />
+        <deepLink app:uri="spatz://userdetail/{userId}" />
+
+        <argument
+            android:name="userId"
+            app:argType="string" />
     </fragment>
 </navigation>

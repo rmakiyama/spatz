@@ -50,7 +50,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private val tweetClickListener = object : TweetItem.TweetOnClickListener {
         override fun onClickUser(tweet: Tweet) {
-            findNavController().navigate(ScreenDestination.UserDetail.deeplink)
+            findNavController().navigate(ScreenDestination.UserDetail(tweet.user.id).deeplink)
         }
     }
 }
