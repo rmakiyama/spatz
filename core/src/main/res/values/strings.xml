@@ -5,4 +5,5 @@
     <string name="tweet">tweet</string>
 
     <string name="screen_label_home">home</string>
+    <string name="screen_label_tweet">tweet</string>
 </resources>
