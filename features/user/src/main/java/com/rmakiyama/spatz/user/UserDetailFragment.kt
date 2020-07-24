@@ -2,6 +2,8 @@ package com.rmakiyama.spatz.user
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.ViewCompat
+import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
@@ -27,9 +29,17 @@ class UserDetailFragment : Fragment(R.layout.fragment_user_detail) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentUserDetailBinding.bind(view)
+        binding.setupInsets()
         binding.toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
 
         viewModel.user.observe(viewLifecycleOwner) { user -> binding.applyUserData(user) }
+    }
+
+    private fun FragmentUserDetailBinding.setupInsets() {
+        ViewCompat.setOnApplyWindowInsetsListener(appbar) { view, insets ->
+            toolbar.updatePadding(top = insets.systemWindowInsetTop)
+            ViewCompat.onApplyWindowInsets(view, insets)
+        }
     }
 
     private fun FragmentUserDetailBinding.applyUserData(user: User) {

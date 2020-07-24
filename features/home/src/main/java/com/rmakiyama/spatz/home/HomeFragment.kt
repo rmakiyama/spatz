@@ -17,6 +17,8 @@ import com.rmakiyama.spatz.home.item.TweetItem
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import dagger.hilt.android.AndroidEntryPoint
+import dev.chrisbanes.insetter.applySystemWindowInsetsToMargin
+import dev.chrisbanes.insetter.applySystemWindowInsetsToPadding
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -27,9 +29,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentHomeBinding.bind(view)
+        binding.setupInsets()
         setupTimelineView(binding.timeline)
         binding.tweetFab.setOnClickListener(::onClickTweetFab)
         viewModel.tweet.observe(viewLifecycleOwner, ::updateTweetList)
+    }
+
+    private fun FragmentHomeBinding.setupInsets() {
+        appbar.applySystemWindowInsetsToPadding(top = true)
+        timeline.applySystemWindowInsetsToPadding(bottom = true)
+        tweetFab.applySystemWindowInsetsToMargin(bottom = true)
     }
 
     private fun setupTimelineView(
