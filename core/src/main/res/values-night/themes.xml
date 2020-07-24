@@ -1,1 +1,11 @@
-<resources></resources>
+<resources>
+
+    <style name="Theme.Spatz" parent="Base.Theme.Spatz">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/spatz_red_200</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/spatz_teal_200</item>
+        <item name="colorOnSecondary">@color/black</item>
+    </style>
+</resources>
