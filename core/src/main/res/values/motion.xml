@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="spatz_motion_duration_large_expanding">300</integer>
+    <integer name="spatz_motion_duration_large_collapsing">250</integer>
+    <integer name="spatz_motion_duration_medium_expanding">250</integer>
+    <integer name="spatz_motion_duration_medium_collapsing">200</integer>
+    <integer name="spatz_motion_duration_small_expanding">125</integer>
+    <integer name="spatz_motion_duration_small_collapsing">125</integer>
+</resources>

@@ -6,4 +6,6 @@
 
     <string name="screen_label_home">home</string>
     <string name="screen_label_tweet">tweet</string>
+
+    <string name="transition_name_fab_to_tweet">fab_to_tweet</string>
 </resources>

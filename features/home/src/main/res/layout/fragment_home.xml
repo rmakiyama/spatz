@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:transitionGroup="true"
     tools:context=".HomeFragment">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -41,6 +42,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/grid_2"
         android:text="@string/tweet"
+        android:transitionName="@string/transition_name_fab_to_tweet"
         app:icon="@drawable/ic_edit" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
