@@ -30,6 +30,7 @@ dependencies {
     implementation "com.google.android.material:material:${versions.mdc}"
 
     implementation "io.coil-kt:coil:${versions.coil}"
+    implementation "dev.chrisbanes:insetter-ktx:${versions.insetter}"
 
     // dependency injection
     implementation "com.google.dagger:hilt-android:${versions.hilt}"

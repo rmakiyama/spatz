@@ -32,6 +32,7 @@ dependencies {
     implementation "io.coil-kt:coil:${versions.coil}"
     implementation "com.xwray:groupie:${versions.groupie}"
     implementation "com.xwray:groupie-databinding:${versions.groupie}"
+    implementation "dev.chrisbanes:insetter-ktx:${versions.insetter}"
 
     // dependency injection
     implementation "com.google.dagger:hilt-android:${versions.hilt}"
