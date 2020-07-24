@@ -6,6 +6,8 @@ apply from: '../app_config.gradle'
 apply from: '../test_dependencies.gradle'
 
 dependencies {
+    implementation project(':domain')
+
     // kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.coroutines}"

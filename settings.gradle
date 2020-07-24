@@ -1,3 +1,5 @@
+include ':features:user'
+include ':features:tweet'
 include ':core'
 include ':data'
 include ':domain'

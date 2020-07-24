@@ -12,6 +12,8 @@
         android:layout_width="@dimen/user_image_size"
         android:layout_height="@dimen/user_image_size"
         android:adjustViewBounds="true"
+        android:clickable="true"
+        android:focusable="true"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toStartOf="@id/user_name"
         app:layout_constraintStart_toStartOf="@id/guideline_start"

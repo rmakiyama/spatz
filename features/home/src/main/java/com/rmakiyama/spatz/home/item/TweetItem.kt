@@ -8,7 +8,8 @@ import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 
 data class TweetItem(
-    val tweet: Tweet
+    val tweet: Tweet,
+    val listener: TweetOnClickListener
 ) : Item<GroupieViewHolder>(tweet.hashCode().toLong()) {
 
     override fun getLayout(): Int = R.layout.item_tweet
@@ -22,5 +23,15 @@ data class TweetItem(
         binding.userName.text = tweet.user.name.value
         binding.userScreenName.text = tweet.user.screenName.value
         binding.tweetText.text = tweet.text.value
+
+        binding.userImage.setOnClickListener { onClickUser() }
+        binding.userName.setOnClickListener { onClickUser() }
+        binding.userScreenName.setOnClickListener { onClickUser() }
+    }
+
+    private fun onClickUser() = listener.onClickUser(tweet)
+
+    interface TweetOnClickListener {
+        fun onClickUser(tweet: Tweet)
     }
 }
