@@ -78,6 +78,7 @@
                     android:id="@+id/user_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/grid_1"
                     android:textAppearance="@style/TextAppearance.spatz.Headline5"
                     app:layout_constraintBottom_toTopOf="@id/user_description"
                     app:layout_constraintEnd_toEndOf="@id/guideline_end"
