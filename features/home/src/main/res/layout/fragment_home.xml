@@ -14,12 +14,12 @@
         app:liftOnScroll="true"
         app:liftOnScrollTargetViewId="@id/timeline">
 
-        <androidx.appcompat.widget.Toolbar
+        <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimarySurface"
-            app:layout_scrollFlags="scroll" />
+            app:layout_scrollFlags="scroll|enterAlways" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

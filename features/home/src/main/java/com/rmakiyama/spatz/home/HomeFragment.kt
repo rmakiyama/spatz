@@ -36,7 +36,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun FragmentHomeBinding.setupInsets() {
-        appbar.applySystemWindowInsetsToPadding(top = true)
+        toolbar.applySystemWindowInsetsToMargin(top = true)
         timeline.applySystemWindowInsetsToPadding(bottom = true)
         tweetFab.applySystemWindowInsetsToMargin(bottom = true)
     }
