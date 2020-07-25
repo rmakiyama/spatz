@@ -4,6 +4,8 @@
 
     <string name="tweet">tweet</string>
 
+    <string name="screen_title_home">HOME</string>
+
     <string name="screen_label_home">home</string>
     <string name="screen_label_tweet">tweet</string>
     <string name="screen_label_user_detail">user_detail</string>
