@@ -1,8 +1,11 @@
 package com.rmakiyama.spatz.data.di
 
+import com.rmakiyama.spatz.data.AuthDataSource
+import com.rmakiyama.spatz.data.DataAuthRepository
 import com.rmakiyama.spatz.data.DataUserRepository
 import com.rmakiyama.spatz.data.FakeTweetRepository
 import com.rmakiyama.spatz.data.UserDataSource
+import com.rmakiyama.spatz.domain.repository.AuthRepository
 import com.rmakiyama.spatz.domain.repository.TweetRepository
 import com.rmakiyama.spatz.domain.repository.UserRepository
 import dagger.Module
@@ -28,5 +31,13 @@ object RepositoryModule {
         @Named("local") localDataSource: UserDataSource
     ): UserRepository {
         return DataUserRepository(localDataSource)
+    }
+
+    @Provides
+    @ActivityRetainedScoped
+    fun provideAuthRepository(
+        localDataSource: AuthDataSource
+    ): AuthRepository {
+        return DataAuthRepository(localDataSource)
     }
 }
