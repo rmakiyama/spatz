@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
+    <color name="black">#FF121212</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="spatz_red_200">#e19f9a</color>
+    <color name="spatz_red_500">#dc5a3d</color>
+    <color name="spatz_red_600">#ce513b</color>
+    <color name="spatz_red_700">#bc4835</color>
+
+    <color name="spatz_teal_200">#a5c3cd</color>
+    <color name="spatz_teal_600">#477582</color>
+    <color name="spatz_teal_700">#39606c</color>
+    <color name="spatz_teal_800">#2c4d57</color>
+
+    <color name="immersive_sys_ui">#33000000</color>
+    <color name="nav_bar">@color/immersive_sys_ui</color>
 </resources>

@@ -7,6 +7,7 @@ import com.google.android.material.transition.MaterialArcMotion
 import com.google.android.material.transition.MaterialContainerTransform
 import com.rmakiyama.spatz.core.extension.motionDurationLargeCollapsing
 import com.rmakiyama.spatz.core.extension.motionDurationLargeExpanding
+import com.rmakiyama.spatz.core.extension.themeColor
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,10 +20,16 @@ class TweetFragment : Fragment(R.layout.fragment_tweet) {
         sharedElementEnterTransition = MaterialContainerTransform().apply {
             duration = motionDurationLargeExpanding
             setPathMotion(MaterialArcMotion())
+            containerColor = requireContext().themeColor(R.attr.colorSurface)
+            startContainerColor = requireContext().themeColor(R.attr.colorSecondary)
+            endContainerColor = requireContext().themeColor(R.attr.colorSurface)
         }
         sharedElementReturnTransition = MaterialContainerTransform().apply {
             duration = motionDurationLargeCollapsing
             setPathMotion(MaterialArcMotion())
+            containerColor = requireContext().themeColor(R.attr.colorSurface)
+            startContainerColor = requireContext().themeColor(R.attr.colorSurface)
+            endContainerColor = requireContext().themeColor(R.attr.colorSecondary)
         }
     }
 }

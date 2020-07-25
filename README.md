@@ -23,6 +23,7 @@ Spatz uses Dagger-Hilt(alpha) for dpendency inject.
 - Material Components for Android
 - Groupie
 - Coil
+- Insetter
 - Timber
 
 ## Todo
