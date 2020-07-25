@@ -10,6 +10,7 @@ import dev.chrisbanes.insetter.Insetter
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_Spatz)
         super.onCreate(savedInstanceState)
         Insetter.setEdgeToEdgeSystemUiFlags(window.decorView, true)
     }
