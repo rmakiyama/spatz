@@ -10,6 +10,7 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.transition.Hold
+import com.google.android.material.transition.MaterialFadeThrough
 import com.google.android.material.transition.MaterialSharedAxis
 import com.rmakiyama.spatz.core.destination.ScreenDestination
 import com.rmakiyama.spatz.core.extension.KEY_LOGIN_SUCCESSFUL
@@ -76,6 +77,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun navigateLogin() {
         Timber.i("info: navigate to login")
+        exitTransition = MaterialFadeThrough()
+        reenterTransition = MaterialFadeThrough()
         findNavController().navigate(ScreenDestination.AuthLogin.deeplink)
     }
 

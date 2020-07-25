@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.transition.MaterialFadeThrough
 import com.rmakiyama.spatz.auth.databinding.FragmentLoginBinding
 import com.rmakiyama.spatz.core.extension.KEY_LOGIN_SUCCESSFUL
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,6 +19,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enterTransition = MaterialFadeThrough()
+        returnTransition = MaterialFadeThrough()
         requireActivity().onBackPressedDispatcher.addCallback(this, closeLoginOnBackPressed)
     }
 
