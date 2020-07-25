@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface AuthRepository {
 
-    fun userFlow(): Flow<Result<AuthUser?>>
+    fun userFlow(): Flow<AuthUser?>
 
     suspend fun save(user: AuthUser)
 }
