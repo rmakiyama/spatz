@@ -1,4 +1,4 @@
-package com.rmakiyama.spatz.domain.usecase
+package com.rmakiyama.spatz.domain.usecase.tweet
 
 import com.rmakiyama.spatz.domain.model.tweet.Tweet
 import com.rmakiyama.spatz.domain.repository.TweetRepository

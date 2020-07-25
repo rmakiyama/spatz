@@ -6,10 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rmakiyama.spatz.domain.model.tweet.Tweet
-import com.rmakiyama.spatz.domain.usecase.GetTweetsUseCase
-import com.rmakiyama.spatz.domain.usecase.LoadAuthUserUseCase
+import com.rmakiyama.spatz.domain.usecase.tweet.GetTweetsUseCase
+import com.rmakiyama.spatz.domain.usecase.auth.LoadAuthUserUseCase
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 
 internal class HomeViewModel @ViewModelInject constructor(
