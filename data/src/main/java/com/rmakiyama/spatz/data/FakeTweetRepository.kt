@@ -10,13 +10,15 @@ import com.rmakiyama.spatz.domain.model.user.UserId
 import com.rmakiyama.spatz.domain.model.user.UserName
 import com.rmakiyama.spatz.domain.model.user.UserScreenName
 import com.rmakiyama.spatz.domain.repository.TweetRepository
+import kotlinx.coroutines.delay
 import javax.inject.Inject
 
 internal class FakeTweetRepository @Inject constructor() : TweetRepository {
 
     @ExperimentalStdlibApi
     override suspend fun getTweets(): List<Tweet> {
-        // TODO
+        // FIXME: for debug
+        delay(1_000L)
         val list = listOf(
             Tweet(
                 id = TweetId(value = "0"),

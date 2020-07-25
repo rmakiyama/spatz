@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.rmakiyama.spatz.auth.databinding.FragmentLoginBinding
+import com.rmakiyama.spatz.core.extension.KEY_LOGIN_SUCCESSFUL
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,13 +23,18 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val navController = findNavController()
+        val savedStateHandle = requireNotNull(navController.previousBackStackEntry).savedStateHandle
         val binding = FragmentLoginBinding.bind(view)
         binding.loginButton.setOnClickListener { viewModel.saveAuthUser() }
 
         viewModel.loading.observe(viewLifecycleOwner) { loading ->
             if (loading) binding.progressBar.show() else binding.progressBar.hide()
         }
-        viewModel.succeeded.observe(viewLifecycleOwner) { findNavController().navigateUp() }
+        viewModel.succeeded.observe(viewLifecycleOwner) {
+            savedStateHandle.set(KEY_LOGIN_SUCCESSFUL, true)
+            navController.popBackStack()
+        }
     }
 
     private val closeLoginOnBackPressed = object : OnBackPressedCallback(true) {

@@ -49,4 +49,11 @@
         android:transitionName="@string/transition_name_fab_to_tweet"
         app:icon="@drawable/ic_edit" />
 
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/progress_bar"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

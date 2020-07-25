@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.transition.Hold
 import com.google.android.material.transition.MaterialSharedAxis
 import com.rmakiyama.spatz.core.destination.ScreenDestination
+import com.rmakiyama.spatz.core.extension.KEY_LOGIN_SUCCESSFUL
 import com.rmakiyama.spatz.domain.model.tweet.Tweet
 import com.rmakiyama.spatz.home.databinding.FragmentHomeBinding
 import com.rmakiyama.spatz.home.item.TweetItem
@@ -31,11 +32,22 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val navController = findNavController()
+        val savedStateHandle = requireNotNull(navController.currentBackStackEntry).savedStateHandle
+        savedStateHandle.getLiveData<Boolean>(KEY_LOGIN_SUCCESSFUL)
+            .observe(viewLifecycleOwner) { success ->
+                if (success) viewModel.getTweets()
+                savedStateHandle.remove<Boolean>(KEY_LOGIN_SUCCESSFUL)
+            }
+
         val binding = FragmentHomeBinding.bind(view)
         binding.setupInsets()
         setupTimelineView(binding.timeline)
         binding.tweetFab.setOnClickListener(::onClickTweetFab)
         viewModel.tweet.observe(viewLifecycleOwner, ::updateTweetList)
+        viewModel.loading.observe(viewLifecycleOwner) { loading ->
+            if (loading) binding.progressBar.show() else binding.progressBar.hide()
+        }
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             viewModel.authUser.collect { user -> if (user == null) navigateLogin() }
