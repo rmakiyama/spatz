@@ -10,13 +10,15 @@ import com.rmakiyama.spatz.domain.model.user.UserId
 import com.rmakiyama.spatz.domain.model.user.UserName
 import com.rmakiyama.spatz.domain.model.user.UserScreenName
 import com.rmakiyama.spatz.domain.repository.TweetRepository
+import kotlinx.coroutines.delay
 import javax.inject.Inject
 
 internal class FakeTweetRepository @Inject constructor() : TweetRepository {
 
     @ExperimentalStdlibApi
     override suspend fun getTweets(): List<Tweet> {
-        // TODO
+        // FIXME: for debug
+        delay(1_000L)
         val list = listOf(
             Tweet(
                 id = TweetId(value = "0"),
@@ -28,7 +30,12 @@ internal class FakeTweetRepository @Inject constructor() : TweetRepository {
                     userWebUrl = Url("https://rmakiyama.com"),
                     profilePhotoUrl = Url(value = "https://pbs.twimg.com/profile_images/792423295479984128/FSVOAqna_400x400.jpg"),
                     profileBannerUrl = Url(value = "https://pbs.twimg.com/profile_banners/2828421925/1512595099/1500x500"),
-                    description = null,
+                    description = UserDescription(
+                        "Androidあっぷえんじにや at Radiotalk Inc.\n" +
+                            "まきやまです。Android開発とボドゲとお酒が好きです。通称まっきー。\n" +
+                            "@filme_app\n" +
+                            " 作りました\uD83D\uDC68\uD83C\uDFFB\u200D\uD83D\uDCBB"
+                    ),
                     followersCount = 110,
                     followsCount = 120,
                     favoritesCount = 124
@@ -45,7 +52,7 @@ internal class FakeTweetRepository @Inject constructor() : TweetRepository {
                     userWebUrl = Url("https://rmakiyama.com"),
                     profilePhotoUrl = Url(value = "https://pbs.twimg.com/profile_images/792423295479984128/FSVOAqna_400x400.jpg"),
                     profileBannerUrl = Url(value = "https://pbs.twimg.com/profile_banners/2828421925/1512595099/1500x500"),
-                    description = UserDescription("hello!"),
+                    description = UserDescription("あつ森で海を泳げるようになるアップデートおそろしく素晴らしいし夢か？ってくらあるしN年後の新作ではもはやオープンワールドになるのではと考えると熱盛"),
                     followersCount = 222,
                     followsCount = 222,
                     favoritesCount = 222
@@ -62,7 +69,7 @@ internal class FakeTweetRepository @Inject constructor() : TweetRepository {
                     userWebUrl = Url("https://rmakiyama.com"),
                     profilePhotoUrl = Url(value = "https://pbs.twimg.com/profile_images/792423295479984128/FSVOAqna_400x400.jpg"),
                     profileBannerUrl = Url(value = "https://pbs.twimg.com/profile_banners/2828421925/1512595099/1500x500"),
-                    description = null,
+                    description = UserDescription("あらためて「ドメイン駆動設計入門 」を読んでいる。ドメインサービスの見極めが難しそうだなあ。実コードに落とし込んでコネコネしたくなってる。"),
                     followersCount = 333,
                     followsCount = 333,
                     favoritesCount = 333
@@ -71,6 +78,8 @@ internal class FakeTweetRepository @Inject constructor() : TweetRepository {
             )
         )
         return buildList {
+            addAll(list)
+            addAll(list)
             addAll(list)
             addAll(list)
             addAll(list)

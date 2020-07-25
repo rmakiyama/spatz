@@ -1,6 +1,8 @@
 package com.rmakiyama.spatz.data.di
 
+import com.rmakiyama.spatz.data.AuthDataSource
 import com.rmakiyama.spatz.data.UserDataSource
+import com.rmakiyama.spatz.data.local.AuthInMemoryDataSource
 import com.rmakiyama.spatz.data.local.UserInMemoryDataSource
 import dagger.Binds
 import dagger.Module
@@ -17,4 +19,10 @@ abstract class PersistenceModule {
     internal abstract fun bindLocalUserDataSource(
         inMemoryDataSource: UserInMemoryDataSource
     ): UserDataSource
+
+    @Binds
+    internal abstract fun bindLocalAuthDataSource(
+        // FIXME
+        localDataSource: AuthInMemoryDataSource
+    ): AuthDataSource
 }

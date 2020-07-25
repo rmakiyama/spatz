@@ -2,4 +2,11 @@
 <resources>
 
     <style name="Widget.Spatz.AppBarLayout" parent="Widget.MaterialComponents.AppBarLayout.Surface" />
+
+    <style name="Widget.Spatz.Button" parent="Widget.MaterialComponents.Button" />
+
+    <style name="Widget.Spatz.Button.Secondary">
+        <item name="android:textColor">@color/btn_bg_secondary_text_color_selector</item>
+        <item name="backgroundTint">@color/btn_bg_secondary_color_selector</item>
+    </style>
 </resources>
