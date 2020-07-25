@@ -8,9 +8,12 @@ sealed class ScreenDestination(path: String) {
     val deeplink: Uri = "$SCHEME://$path".toUri()
 
     object Tweet : ScreenDestination("tweet")
+
     data class UserDetail(
         val userId: UserId
     ) : ScreenDestination("userdetail/${userId.value}")
+
+    object AuthLogin : ScreenDestination("auth/login")
 
     companion object {
         private const val SCHEME: String = "spatz"
