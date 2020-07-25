@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
@@ -19,6 +20,8 @@ import com.xwray.groupie.GroupieViewHolder
 import dagger.hilt.android.AndroidEntryPoint
 import dev.chrisbanes.insetter.applySystemWindowInsetsToMargin
 import dev.chrisbanes.insetter.applySystemWindowInsetsToPadding
+import kotlinx.coroutines.flow.collect
+import timber.log.Timber
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -33,6 +36,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         setupTimelineView(binding.timeline)
         binding.tweetFab.setOnClickListener(::onClickTweetFab)
         viewModel.tweet.observe(viewLifecycleOwner, ::updateTweetList)
+
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.authUser.collect { user -> if (user == null) navigateLogin() }
+        }
     }
 
     private fun FragmentHomeBinding.setupInsets() {
@@ -53,6 +60,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val fabToTweetTransitionName = getString(R.string.transition_name_fab_to_tweet)
         val extra = FragmentNavigatorExtras(view to fabToTweetTransitionName)
         findNavController().navigate(ScreenDestination.Tweet.deeplink, null, extra)
+    }
+
+    private fun navigateLogin() {
+        Timber.i("info: navigate to login")
+        findNavController().navigate(ScreenDestination.AuthLogin.deeplink)
     }
 
     private fun updateTweetList(tweets: List<Tweet>) {

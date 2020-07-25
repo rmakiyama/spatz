@@ -17,11 +17,11 @@ internal class DataAuthRepository @Inject constructor(
     private val localDataSource: AuthDataSource
 ) : AuthRepository {
 
-    private val _authUser = ConflatedBroadcastChannel<AuthUser>()
-    private val authUser = _authUser.asFlow()
+    private val _authUser = ConflatedBroadcastChannel<AuthUser?>()
+    private val authUser get() = _authUser.asFlow()
 
-    override fun userFlow(): Flow<AuthUser> = flow {
-        localDataSource.get()?.let { user -> emit(user) }
+    override fun userFlow(): Flow<AuthUser?> = flow {
+        emit(localDataSource.get())
         emitAll(authUser)
     }
 
