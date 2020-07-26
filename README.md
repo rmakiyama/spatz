@@ -6,8 +6,9 @@ The concept of this sample is my development practice.
 ## Architecture
 
 This app is based on the MVVM architecture and has a layered architecture.  
-The dependency of the application is like this.  
-`presentation` -> `domain` <- `data`
+The dependency of the application is like this.
+
+`presentation` --> `usecase` --> `domain` <<-- `data`
 
 Spatz uses Dagger-Hilt(alpha) for dpendency inject.
 

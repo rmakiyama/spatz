@@ -21,6 +21,7 @@
             <option value="$PROJECT_DIR$/features/tweet" />
             <option value="$PROJECT_DIR$/features/user" />
             <option value="$PROJECT_DIR$/test-shared" />
+            <option value="$PROJECT_DIR$/usecase" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

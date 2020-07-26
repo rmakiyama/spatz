@@ -9,6 +9,7 @@ apply from: '../../app_config.gradle'
 apply from: '../../test_dependencies.gradle'
 
 dependencies {
+    implementation project(':usecase')
     implementation project(':domain')
     implementation project(':core')
 

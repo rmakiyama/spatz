@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rmakiyama.spatz.domain.model.auth.AuthUser
-import com.rmakiyama.spatz.domain.usecase.auth.SaveAuthUserUseCase
+import com.rmakiyama.spatz.usecase.auth.SaveAuthUserUseCase
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

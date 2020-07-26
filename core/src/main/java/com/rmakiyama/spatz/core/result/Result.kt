@@ -1,6 +1,6 @@
-package com.rmakiyama.spatz.domain.result
+package com.rmakiyama.spatz.core.result
 
-import com.rmakiyama.spatz.domain.result.Result.Success
+import com.rmakiyama.spatz.core.result.Result.Success
 
 sealed class Result<out R> {
 

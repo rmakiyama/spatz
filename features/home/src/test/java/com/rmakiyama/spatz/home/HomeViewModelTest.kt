@@ -2,9 +2,9 @@ package com.rmakiyama.spatz.home
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.rmakiyama.spatz.domain.model.auth.AuthUser
-import com.rmakiyama.spatz.domain.result.Result
-import com.rmakiyama.spatz.domain.usecase.auth.LoadAuthUserUseCase
-import com.rmakiyama.spatz.domain.usecase.tweet.GetTweetsUseCase
+import com.rmakiyama.spatz.core.result.Result
+import com.rmakiyama.spatz.usecase.auth.LoadAuthUserUseCase
+import com.rmakiyama.spatz.usecase.tweet.GetTweetsUseCase
 import com.rmakiyama.spatz.test.MainCoroutineRule
 import com.rmakiyama.spatz.test.MockkRule
 import com.rmakiyama.spatz.test.data.Fakes
@@ -15,7 +15,6 @@ import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
 import org.junit.Assert
 import org.junit.Rule
