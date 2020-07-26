@@ -8,6 +8,7 @@ import com.rmakiyama.spatz.domain.usecase.tweet.GetTweetsUseCase
 import com.rmakiyama.spatz.test.MainCoroutineRule
 import com.rmakiyama.spatz.test.MockkRule
 import com.rmakiyama.spatz.test.data.Fakes
+import com.rmakiyama.spatz.test.runBlockingTest
 import io.mockk.Called
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -16,7 +17,6 @@ import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
@@ -33,7 +33,7 @@ class HomeViewModelTest {
     @MockK private lateinit var getTweets: GetTweetsUseCase
 
     @Test
-    fun initTest_AuthUser() = runBlockingTest {
+    fun initTest_AuthUser() = coroutineRule.runBlockingTest {
         val fakeUser = AuthUser()
         every { loadAuthUser(Unit) } returns flowOf(Result.Success(fakeUser))
         coEvery { getTweets(Unit) } returns Result.Success(emptyList())
@@ -47,7 +47,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun initTest_NonAuth() = runBlockingTest {
+    fun initTest_NonAuth() = coroutineRule.runBlockingTest {
         every { loadAuthUser(Unit) } returns flowOf(Result.Success(null))
         coEvery { getTweets(Unit) } returns Result.Success(emptyList())
 
@@ -62,7 +62,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun loadTweetsTest_LiveDataUpdate() {
+    fun loadTweetsTest_LiveDataUpdate() = coroutineRule.runBlockingTest {
         every { loadAuthUser(Unit) } returns flowOf(Result.Success(AuthUser()))
         coEvery { getTweets(Unit) } returns Result.Success(Fakes.tweets)
 
