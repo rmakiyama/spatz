@@ -1,4 +1,4 @@
-package com.rmakiyama.spatz.domain.usecase
+package com.rmakiyama.spatz.usecase
 
 import com.rmakiyama.spatz.domain.result.Result
 

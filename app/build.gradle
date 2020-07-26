@@ -19,6 +19,7 @@ dependencies {
     implementation project(':features:tweet')
     implementation project(':features:user')
     implementation project(':features:auth')
+    implementation project(':usecase')
     implementation project(':domain')
     implementation project(':data')
     implementation project(':core')
