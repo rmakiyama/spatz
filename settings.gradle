@@ -1,3 +1,4 @@
+include ':usecase'
 include ':test-shared'
 include ':features:auth'
 include ':features:user'
