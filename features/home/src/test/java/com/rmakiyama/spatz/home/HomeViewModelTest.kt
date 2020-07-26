@@ -2,7 +2,7 @@ package com.rmakiyama.spatz.home
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.rmakiyama.spatz.domain.model.auth.AuthUser
-import com.rmakiyama.spatz.domain.result.Result
+import com.rmakiyama.spatz.core.result.Result
 import com.rmakiyama.spatz.usecase.auth.LoadAuthUserUseCase
 import com.rmakiyama.spatz.usecase.tweet.GetTweetsUseCase
 import com.rmakiyama.spatz.test.MainCoroutineRule

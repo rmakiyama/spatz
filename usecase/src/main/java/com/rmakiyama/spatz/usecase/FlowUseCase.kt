@@ -1,6 +1,6 @@
 package com.rmakiyama.spatz.usecase
 
-import com.rmakiyama.spatz.domain.result.Result
+import com.rmakiyama.spatz.core.result.Result
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 
