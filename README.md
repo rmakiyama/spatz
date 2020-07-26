@@ -19,15 +19,17 @@ Spatz uses Dagger-Hilt(alpha) for dpendency inject.
     - ViewModel
     - LiveData
     - Navigation
+    - arch core testing
 - Dagger Hilt (2.28.3-alpha)
 - Material Components for Android
 - Groupie
 - Coil
 - Insetter
 - Timber
+- mockk
 
 ## Todo
 
 - [ ] call Twitter API
-- [ ] unit testing
+- [x] unit testing
 - [ ] apply theming

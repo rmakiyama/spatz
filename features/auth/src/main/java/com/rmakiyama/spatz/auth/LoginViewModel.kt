@@ -16,6 +16,7 @@ class LoginViewModel @ViewModelInject constructor(
 
     private val _loading = MutableLiveData<Boolean>(false)
     val loading: LiveData<Boolean> get() = _loading
+
     // TODO
     private val _succeeded = MutableLiveData<Unit>()
     val succeeded: LiveData<Unit> get() = _succeeded
@@ -26,7 +27,7 @@ class LoginViewModel @ViewModelInject constructor(
             _loading.value = true
             delay(1_500L)
             val user = AuthUser()
-            saveAuthUser.run(user)
+            saveAuthUser(user)
             _loading.value = false
             _succeeded.value = Unit
         }

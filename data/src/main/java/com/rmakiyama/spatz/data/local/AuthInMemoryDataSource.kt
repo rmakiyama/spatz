@@ -13,5 +13,5 @@ class AuthInMemoryDataSource @Inject constructor() : AuthDataSource {
         authUser = user
     }
 
-    override suspend fun get(): AuthUser? = authUser
+    override suspend fun get() = authUser
 }

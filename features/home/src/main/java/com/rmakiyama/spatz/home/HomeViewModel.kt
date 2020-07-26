@@ -6,34 +6,45 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rmakiyama.spatz.domain.model.tweet.Tweet
+import com.rmakiyama.spatz.domain.result.Result
 import com.rmakiyama.spatz.domain.usecase.auth.LoadAuthUserUseCase
 import com.rmakiyama.spatz.domain.usecase.tweet.GetTweetsUseCase
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 internal class HomeViewModel @ViewModelInject constructor(
-    private val loadAuthUser: LoadAuthUserUseCase,
+    loadAuthUser: LoadAuthUserUseCase,
     private val getTweets: GetTweetsUseCase
 ) : ViewModel() {
 
-    val authUser get() = loadAuthUser.load(Unit)
+    val authUser = loadAuthUser(Unit)
     private val _tweet = MutableLiveData<List<Tweet>>()
     val tweet: LiveData<List<Tweet>> get() = _tweet
     private val _loading = MutableLiveData<Boolean>(false)
     val loading: LiveData<Boolean> get() = _loading
 
     init {
-        viewModelScope.launch {
-            if (authUser.first() != null) getTweets()
-        }
+        firstLoad()
     }
 
     fun getTweets() {
         viewModelScope.launch {
-            // TODO: failed pattern
             _loading.value = true
-            _tweet.value = getTweets.run(Unit)
+            when (val result = getTweets(Unit)) {
+                is Result.Success -> _tweet.value = result.data.orEmpty()
+                is Result.Error -> Timber.e(result.exception)
+            }
             _loading.value = false
+        }
+    }
+
+    private fun firstLoad() {
+        viewModelScope.launch {
+            when (val result = authUser.first()) {
+                is Result.Success -> if (result.data != null) getTweets()
+                is Result.Error -> Timber.e(result.exception)
+            }
         }
     }
 }
