@@ -6,6 +6,7 @@ class TransitionEndListener(private val doOnEnd: () -> Unit) : Transition.Transi
 
     override fun onTransitionEnd(transition: Transition) {
         doOnEnd()
+        transition.removeListener(this)
     }
 
     override fun onTransitionResume(transition: Transition) {}
