@@ -46,6 +46,10 @@ dependencies {
     implementation "com.xwray:groupie-databinding:${versions.groupie}"
     implementation "dev.chrisbanes:insetter-ktx:${versions.insetter}"
 
+    implementation "com.squareup.okhttp3:okhttp:${versions.okhttp}"
+    implementation "com.squareup.retrofit2:retrofit:${versions.retrofit}"
+    implementation "com.squareup.moshi:moshi-kotlin:${versions.moshi}"
+
     // dependency injection
     implementation "com.google.dagger:hilt-android:${versions.hilt}"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:${versions.hiltJetpack}"

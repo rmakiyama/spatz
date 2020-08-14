@@ -7,10 +7,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rmakiyama.spatz.domain.model.auth.AuthUser
 import com.rmakiyama.spatz.usecase.auth.SaveAuthUserUseCase
+import com.rmakiyama.spatz.usecase.auth.TwitterLoginUseCase
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class LoginViewModel @ViewModelInject constructor(
+    private val login: TwitterLoginUseCase,
     private val saveAuthUser: SaveAuthUserUseCase
 ) : ViewModel() {
 
@@ -20,6 +22,12 @@ class LoginViewModel @ViewModelInject constructor(
     // TODO
     private val _succeeded = MutableLiveData<Unit>()
     val succeeded: LiveData<Unit> get() = _succeeded
+
+    fun login() {
+        viewModelScope.launch {
+            login(Unit)
+        }
+    }
 
     // FIXME
     fun saveAuthUser() {

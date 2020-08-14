@@ -16,6 +16,10 @@ buildscript {
             'coil'            : '0.11.0',
             'groupie'         : '2.7.2',
             'insetter'        : '0.3.1',
+            // network
+            'okhttp'          : '4.8.1',
+            'retrofit'        : '2.9.0',
+            'moshi'           : '1.9.3',
             // utilities
             'hilt'            : '2.28.3-alpha',
             'hiltJetpack'     : '1.0.0-alpha02',

@@ -29,7 +29,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         val navController = findNavController()
         val savedStateHandle = requireNotNull(navController.previousBackStackEntry).savedStateHandle
         val binding = FragmentLoginBinding.bind(view)
-        binding.loginButton.setOnClickListener { viewModel.saveAuthUser() }
+        binding.loginButton.setOnClickListener { viewModel.login() }
 
         viewModel.loading.observe(viewLifecycleOwner) { loading ->
             if (loading) binding.progressBar.show() else binding.progressBar.hide()
