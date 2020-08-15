@@ -2,6 +2,7 @@ package com.rmakiyama.spatz.data.di
 
 import com.rmakiyama.spatz.core.BuildConfig
 import com.rmakiyama.spatz.data.retrofit.TwitterApiClient
+import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -54,7 +55,7 @@ object NetworkModule {
         return Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl("https://api.twitter.com/")
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create(Moshi.Builder().build()))
             .build()
     }
 
