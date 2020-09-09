@@ -11,6 +11,7 @@ import com.rmakiyama.spatz.domain.model.user.UserName
 import com.rmakiyama.spatz.domain.model.user.UserScreenName
 import com.rmakiyama.spatz.domain.repository.TweetRepository
 import kotlinx.coroutines.delay
+import org.threeten.bp.LocalDateTime
 import javax.inject.Inject
 
 internal class FakeTweetRepository @Inject constructor() : TweetRepository {
@@ -40,7 +41,7 @@ internal class FakeTweetRepository @Inject constructor() : TweetRepository {
                     followsCount = 120,
                     favoritesCount = 124
                 ),
-                createdTimestamp = 1595501426
+                createdTimestamp = LocalDateTime.now()
             ),
             Tweet(
                 id = TweetId(value = "1"),
@@ -57,7 +58,7 @@ internal class FakeTweetRepository @Inject constructor() : TweetRepository {
                     followsCount = 222,
                     favoritesCount = 222
                 ),
-                createdTimestamp = 1595501426
+                createdTimestamp = LocalDateTime.now()
             ),
             Tweet(
                 id = TweetId(value = "2"),
@@ -74,7 +75,7 @@ internal class FakeTweetRepository @Inject constructor() : TweetRepository {
                     followsCount = 333,
                     favoritesCount = 333
                 ),
-                createdTimestamp = 1595501426
+                createdTimestamp = LocalDateTime.now()
             )
         )
         return buildList {

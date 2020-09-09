@@ -1,6 +1,7 @@
 package com.rmakiyama.spatz.data
 
 import com.rmakiyama.spatz.data.retrofit.TwitterApiClient
+import com.rmakiyama.spatz.data.retrofit.mapper.toTweet
 import com.rmakiyama.spatz.domain.model.tweet.Tweet
 import com.rmakiyama.spatz.domain.repository.TweetRepository
 import javax.inject.Inject
@@ -10,7 +11,13 @@ internal class DataTweetRepository @Inject constructor(
 ) : TweetRepository {
 
     override suspend fun getTweets(): List<Tweet> {
-        api.getHomeTimeline()
-        return emptyList()
+        val response = api.getHomeTimeline()
+        if (response.isSuccessful) {
+            return response.body().orEmpty().map { tweetResponse ->
+                tweetResponse.toTweet()
+            }
+        } else {
+            throw Throwable(response.errorBody()?.string())
+        }
     }
 }
