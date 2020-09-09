@@ -14,9 +14,8 @@ import com.google.android.material.transition.MaterialFadeThrough
 import com.google.android.material.transition.MaterialSharedAxis
 import com.rmakiyama.spatz.core.destination.ScreenDestination
 import com.rmakiyama.spatz.core.extension.KEY_LOGIN_SUCCESSFUL
-import com.rmakiyama.spatz.domain.model.auth.AuthUser
-import com.rmakiyama.spatz.domain.model.tweet.Tweet
 import com.rmakiyama.spatz.core.result.Result
+import com.rmakiyama.spatz.domain.model.tweet.Tweet
 import com.rmakiyama.spatz.domain.model.twitter.TwitterSession
 import com.rmakiyama.spatz.home.databinding.FragmentHomeBinding
 import com.rmakiyama.spatz.home.item.TweetItem

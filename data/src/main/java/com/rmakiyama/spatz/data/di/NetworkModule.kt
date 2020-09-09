@@ -1,6 +1,7 @@
 package com.rmakiyama.spatz.data.di
 
 import com.rmakiyama.spatz.core.BuildConfig
+import com.rmakiyama.spatz.data.TwitterSessionSource
 import com.rmakiyama.spatz.data.retrofit.TwitterApiClient
 import com.squareup.moshi.Moshi
 import dagger.Module
@@ -25,12 +26,20 @@ object NetworkModule {
     @Provides
     @Singleton
     @Named("oauth")
-    fun provideOAuthHeaderInterceptor(): Interceptor = object : Interceptor {
+    fun provideOAuthHeaderInterceptor(
+        twitterSessionSource: TwitterSessionSource
+    ): Interceptor = object : Interceptor {
         override fun intercept(chain: Interceptor.Chain): Response {
             val consumer = OkHttpOAuthConsumer(
                 BuildConfig.CONSUMER_KEY,
                 BuildConfig.CONSUMER_SECRET
             )
+            twitterSessionSource.get()?.also { session ->
+                consumer.setTokenWithSecret(
+                    session.authToken.token,
+                    session.authToken.secret
+                )
+            }
             return SigningInterceptor(consumer).intercept(chain)
         }
     }

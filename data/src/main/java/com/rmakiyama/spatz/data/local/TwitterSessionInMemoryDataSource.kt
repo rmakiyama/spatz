@@ -9,9 +9,9 @@ class TwitterSessionInMemoryDataSource @Inject constructor() : TwitterSessionSou
 
     private var session: TwitterSession? = null
 
-    override suspend fun save(session: TwitterSession) {
+    override fun save(session: TwitterSession) {
         this.session = session
     }
 
-    override suspend fun get() = session
+    override fun get() = session
 }

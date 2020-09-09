@@ -28,4 +28,7 @@ dependencies {
     implementation "com.squareup.moshi:moshi-kotlin:${versions.moshi}"
     kapt "com.squareup.moshi:moshi-kotlin-codegen:${versions.moshi}"
     implementation "se.akerfeldt:okhttp-signpost:1.1.0"
+
+    implementation "androidx.preference:preference-ktx:1.1.1"
+    implementation "androidx.security:security-crypto:1.1.0-alpha02"
 }

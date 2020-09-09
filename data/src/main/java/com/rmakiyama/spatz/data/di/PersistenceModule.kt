@@ -2,8 +2,8 @@ package com.rmakiyama.spatz.data.di
 
 import com.rmakiyama.spatz.data.TwitterSessionSource
 import com.rmakiyama.spatz.data.UserDataSource
-import com.rmakiyama.spatz.data.local.TwitterSessionInMemoryDataSource
 import com.rmakiyama.spatz.data.local.UserInMemoryDataSource
+import com.rmakiyama.spatz.data.preference.TwitterSessionPreferencesStorage
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -22,7 +22,6 @@ abstract class PersistenceModule {
 
     @Binds
     internal abstract fun bindLocalTwitterSessionDataSource(
-        // FIXME
-        localDataSource: TwitterSessionInMemoryDataSource
+        localDataSource: TwitterSessionPreferencesStorage
     ): TwitterSessionSource
 }
