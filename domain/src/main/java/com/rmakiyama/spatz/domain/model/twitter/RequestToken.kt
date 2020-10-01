@@ -10,6 +10,6 @@ data class RequestToken(
     }
 
     companion object {
-        private const val OAUTH_URL = "https://api.twitter.com/oauth/authorize"
+        private const val OAUTH_URL = "https://api.twitter.com/oauth/authenticate"
     }
 }

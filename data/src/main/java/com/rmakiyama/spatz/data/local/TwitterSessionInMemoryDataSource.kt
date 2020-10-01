@@ -14,4 +14,8 @@ class TwitterSessionInMemoryDataSource @Inject constructor() : TwitterSessionSou
     }
 
     override fun get() = session
+
+    override fun clear() {
+        session = null
+    }
 }

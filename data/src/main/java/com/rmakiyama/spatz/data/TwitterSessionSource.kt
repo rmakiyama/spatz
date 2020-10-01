@@ -5,4 +5,5 @@ import com.rmakiyama.spatz.domain.model.twitter.TwitterSession
 interface TwitterSessionSource {
     fun save(session: TwitterSession)
     fun get(): TwitterSession?
+    fun clear()
 }

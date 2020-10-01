@@ -1,14 +1,16 @@
 package com.rmakiyama.spatz.auth
 
 import android.app.Activity
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
+import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.transition.MaterialFadeThrough
 import com.rmakiyama.spatz.auth.TwitterUtil.EXTRA_OAUTH_TOKEN
@@ -17,7 +19,6 @@ import com.rmakiyama.spatz.auth.TwitterUtil.EXTRA_SCREEN_NAME
 import com.rmakiyama.spatz.auth.databinding.FragmentLoginBinding
 import com.rmakiyama.spatz.core.extension.KEY_LOGIN_SUCCESSFUL
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class LoginFragment : Fragment(R.layout.fragment_login) {
@@ -53,7 +54,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             if (loading) binding.progressBar.show() else binding.progressBar.hide()
         }
         viewModel.requestToken.observe(viewLifecycleOwner) { token ->
-            Timber.i("info: request token. $token")
+            showBrowserSignInFlow(token.getAuthorizeURL().toUri())
         }
         viewModel.succeeded.observe(viewLifecycleOwner) {
             savedStateHandle.set(KEY_LOGIN_SUCCESSFUL, true)
@@ -65,9 +66,16 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         if (TwitterUtil.isSSOAvailable(requireContext())) {
             startForResultSSO.launch(TwitterUtil.getTwitterSSOIntent(requireContext()))
         } else {
-            // TODO
-            // viewModel.login()
+            viewModel.getRequestToken()
         }
+    }
+
+    private fun showBrowserSignInFlow(uri: Uri) {
+        CustomTabsIntent.Builder()
+            .setShowTitle(true)
+            .enableUrlBarHiding()
+            .build()
+            .launchUrl(requireContext(), uri)
     }
 
     private val closeLoginOnBackPressed = object : OnBackPressedCallback(true) {

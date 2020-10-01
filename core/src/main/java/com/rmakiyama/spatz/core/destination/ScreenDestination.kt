@@ -19,5 +19,7 @@ sealed class ScreenDestination(path: String) {
         private const val SCHEME: String = "spatz"
 
         const val PARAM_USER_ID = "userId"
+        const val PARAM_OAUTH_TOKEN = "oauth_token"
+        const val PARAM_OAUTH_VERIFIER = "oauth_verifier"
     }
 }

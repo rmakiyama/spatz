@@ -5,11 +5,11 @@ import com.rmakiyama.spatz.domain.service.AuthService
 import com.rmakiyama.spatz.usecase.SuspendUseCase
 import javax.inject.Inject
 
-class TwitterLoginUseCase @Inject constructor(
+class GetRequestTokenUseCase @Inject constructor(
     private val authService: AuthService
 ) : SuspendUseCase<Unit, RequestToken>() {
 
     override suspend fun execute(command: Unit): RequestToken {
-        return authService.login()
+        return authService.getRequestToken()
     }
 }

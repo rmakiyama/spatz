@@ -57,6 +57,14 @@ internal class TwitterSessionPreferencesStorage @Inject constructor(
         )
     }
 
+    override fun clear() {
+        prefs.edit {
+            putString(PREF_OAUTH_TOKEN, null)
+            putString(PREF_OAUTH_TOKEN_SECRET, null)
+            putString(PREF_SCREEN_NAME, null)
+        }
+    }
+
     companion object {
         const val PREFS_NAME = "twitter_session"
         const val PREF_OAUTH_TOKEN = "pref_oauth_token"
