@@ -2,7 +2,6 @@ package com.rmakiyama.spatz.home
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.rmakiyama.spatz.core.result.Result
-import com.rmakiyama.spatz.domain.model.auth.AuthUser
 import com.rmakiyama.spatz.domain.model.twitter.TwitterAuthToken
 import com.rmakiyama.spatz.domain.model.twitter.TwitterSession
 import com.rmakiyama.spatz.test.MainCoroutineRule
@@ -44,7 +43,6 @@ class HomeViewModelTest {
             loadTwitterSession = loadTwitterSession,
             getTweets = getTweets
         )
-        every { viewModel.getTweets() } returns Unit
 
         coVerify(exactly = 1) { getTweets(Unit) }
 
@@ -60,7 +58,6 @@ class HomeViewModelTest {
             loadTwitterSession = loadTwitterSession,
             getTweets = getTweets
         )
-        every { viewModel.getTweets() } returns Unit
 
         coVerify {
             getTweets(Unit) wasNot Called

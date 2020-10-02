@@ -7,5 +7,5 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.coroutines}"
 
-    implementation 'com.jakewharton.threetenabp:threetenabp:1.2.4'
+    implementation "com.jakewharton.threetenabp:threetenabp:${versions.threetenabp}"
 }
