@@ -9,6 +9,7 @@ import com.rmakiyama.spatz.domain.model.user.UserDescription
 import com.rmakiyama.spatz.domain.model.user.UserId
 import com.rmakiyama.spatz.domain.model.user.UserName
 import com.rmakiyama.spatz.domain.model.user.UserScreenName
+import org.threeten.bp.LocalDateTime
 
 object Fakes {
 
@@ -33,7 +34,7 @@ object Fakes {
                 followsCount = 120,
                 favoritesCount = 124
             ),
-            createdTimestamp = 1595501426
+            createdTimestamp = LocalDateTime.now()
         ),
         Tweet(
             id = TweetId(value = "1"),
@@ -50,7 +51,7 @@ object Fakes {
                 followsCount = 222,
                 favoritesCount = 222
             ),
-            createdTimestamp = 1595501426
+            createdTimestamp = LocalDateTime.now()
         ),
         Tweet(
             id = TweetId(value = "2"),
@@ -67,7 +68,7 @@ object Fakes {
                 followsCount = 333,
                 favoritesCount = 333
             ),
-            createdTimestamp = 1595501426
+            createdTimestamp = LocalDateTime.now()
         )
     )
 }

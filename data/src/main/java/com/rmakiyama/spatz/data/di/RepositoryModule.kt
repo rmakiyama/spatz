@@ -1,12 +1,13 @@
 package com.rmakiyama.spatz.data.di
 
-import com.rmakiyama.spatz.data.AuthDataSource
-import com.rmakiyama.spatz.data.DataAuthRepository
+import com.rmakiyama.spatz.data.DataTweetRepository
+import com.rmakiyama.spatz.data.DataTwitterSessionRepository
 import com.rmakiyama.spatz.data.DataUserRepository
-import com.rmakiyama.spatz.data.FakeTweetRepository
+import com.rmakiyama.spatz.data.TwitterSessionSource
 import com.rmakiyama.spatz.data.UserDataSource
-import com.rmakiyama.spatz.domain.repository.AuthRepository
+import com.rmakiyama.spatz.data.retrofit.TwitterApiClient
 import com.rmakiyama.spatz.domain.repository.TweetRepository
+import com.rmakiyama.spatz.domain.repository.TwitterSessionRepository
 import com.rmakiyama.spatz.domain.repository.UserRepository
 import dagger.Module
 import dagger.Provides
@@ -21,8 +22,10 @@ object RepositoryModule {
 
     @Provides
     @ActivityRetainedScoped
-    fun provideTweetRepository(): TweetRepository {
-        return FakeTweetRepository()
+    fun provideTweetRepository(
+        api: TwitterApiClient
+    ): TweetRepository {
+        return DataTweetRepository(api = api)
     }
 
     @Provides
@@ -36,8 +39,8 @@ object RepositoryModule {
     @Provides
     @ActivityRetainedScoped
     fun provideAuthRepository(
-        localDataSource: AuthDataSource
-    ): AuthRepository {
-        return DataAuthRepository(localDataSource)
+        localDataSource: TwitterSessionSource
+    ): TwitterSessionRepository {
+        return DataTwitterSessionRepository(localDataSource)
     }
 }

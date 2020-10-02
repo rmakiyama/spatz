@@ -9,6 +9,13 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        def properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+        def CONSUMER_KEY = properties.getProperty("consumer_key")
+        def CONSUMER_SECRET = properties.getProperty("consumer_secret")
+        buildConfigField("String", "CONSUMER_KEY", "\"${CONSUMER_KEY}\"")
+        buildConfigField("String", "CONSUMER_SECRET", "\"${CONSUMER_SECRET}\"")
     }
     buildTypes {
         release {

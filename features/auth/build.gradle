@@ -35,6 +35,8 @@ dependencies {
     implementation "com.xwray:groupie-databinding:${versions.groupie}"
     implementation "dev.chrisbanes:insetter-ktx:${versions.insetter}"
 
+    implementation "androidx.browser:browser:1.2.0"
+
     // dependency injection
     implementation "com.google.dagger:hilt-android:${versions.hilt}"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:${versions.hiltJetpack}"

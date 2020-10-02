@@ -8,7 +8,7 @@ data class User(
     val screenName: UserScreenName,
     val userWebUrl: Url?,
     val profilePhotoUrl: Url,
-    val profileBannerUrl: Url,
+    val profileBannerUrl: Url?,
     val description: UserDescription?,
     val followersCount: Int,
     val followsCount: Int,

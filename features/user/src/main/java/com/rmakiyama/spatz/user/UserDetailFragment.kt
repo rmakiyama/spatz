@@ -43,7 +43,7 @@ class UserDetailFragment : Fragment(R.layout.fragment_user_detail) {
     }
 
     private fun FragmentUserDetailBinding.applyUserData(user: User) {
-        userBannerImage.load(user.profileBannerUrl.value)
+        userBannerImage.load(user.profileBannerUrl?.value)
         userImage.load(user.profilePhotoUrl.value)
         userName.text = user.name.value
         userDescription.text = user.description?.value

@@ -14,9 +14,9 @@ import com.google.android.material.transition.MaterialFadeThrough
 import com.google.android.material.transition.MaterialSharedAxis
 import com.rmakiyama.spatz.core.destination.ScreenDestination
 import com.rmakiyama.spatz.core.extension.KEY_LOGIN_SUCCESSFUL
-import com.rmakiyama.spatz.domain.model.auth.AuthUser
-import com.rmakiyama.spatz.domain.model.tweet.Tweet
 import com.rmakiyama.spatz.core.result.Result
+import com.rmakiyama.spatz.domain.model.tweet.Tweet
+import com.rmakiyama.spatz.domain.model.twitter.TwitterSession
 import com.rmakiyama.spatz.home.databinding.FragmentHomeBinding
 import com.rmakiyama.spatz.home.item.TweetItem
 import com.xwray.groupie.GroupAdapter
@@ -53,7 +53,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewModel.authUser.collect { result -> checkAuth(result) }
+            viewModel.twitterSession.collect { result -> checkAuth(result) }
         }
     }
 
@@ -69,7 +69,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         timeline.adapter = timelineAdapter
     }
 
-    private fun checkAuth(result: Result<AuthUser?>) {
+    private fun checkAuth(result: Result<TwitterSession?>) {
         when (result) {
             is Result.Success -> if (result.data == null) navigateLogin()
             is Result.Error -> Timber.e(result.exception)

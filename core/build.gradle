@@ -21,4 +21,8 @@ dependencies {
     implementation "com.google.android.material:material:${versions.mdc}"
 
     api 'com.jakewharton.timber:timber:4.7.1'
+    api "com.jakewharton.threetenabp:threetenabp:${versions.threetenabp}"
+    testApi("org.threeten:threetenbp:1.4.4") {
+        exclude module: "com.jakewharton.threetenabp:threetenabp:${versions.threetenabp}"
+    }
 }
