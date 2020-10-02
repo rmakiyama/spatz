@@ -1,5 +1,6 @@
 package com.rmakiyama.spatz.data.service
 
+import com.rmakiyama.spatz.data.RequestTokenSource
 import com.rmakiyama.spatz.data.TwitterSessionSource
 import com.rmakiyama.spatz.data.retrofit.TwitterApiClient
 import com.rmakiyama.spatz.domain.model.twitter.RequestToken
@@ -11,35 +12,43 @@ import javax.inject.Inject
 
 internal class SpatzAuthService @Inject constructor(
     private val api: TwitterApiClient,
-    private val sessionSource: TwitterSessionSource
+    private val sessionSource: TwitterSessionSource,
+    private val requestTokenSource: RequestTokenSource,
 ) : AuthService {
 
     override suspend fun getRequestToken(): RequestToken {
         return api.requestToken().toOAuthToken().also { requestToken ->
-            sessionSource.save(
-                TwitterSession(
-                    authToken = TwitterAuthToken(
-                        token = requestToken.token,
-                        secret = requestToken.tokenSecret
-                    ),
-                    screenName = ""
-                )
-            )
+            requestTokenSource.save(requestToken)
         }
     }
 
     override suspend fun getAccessToken(token: String, verifier: String) {
-        checkNotNull(sessionSource.get()) { "you should request token before." }
-        if (token == requireNotNull(sessionSource.get()).authToken.token) {
+        checkNotNull(requestTokenSource.get()) { "you should request token before." }
+        val requestToken = requireNotNull(requestTokenSource.get())
+        if (token == requestToken.token) {
             try {
+                createSession(requestToken)
                 api.accessToken(verifier).saveSession()
             } catch (e: Exception) {
+                requestTokenSource.clear()
                 sessionSource.clear()
                 throw e
             }
         } else {
             throw IllegalArgumentException("invalid token.")
         }
+    }
+
+    private fun createSession(requestToken: RequestToken) {
+        sessionSource.save(
+            TwitterSession(
+                authToken = TwitterAuthToken(
+                    token = requestToken.token,
+                    secret = requestToken.tokenSecret
+                ),
+                screenName = ""
+            )
+        )
     }
 
     private fun ResponseBody.toOAuthToken(): RequestToken {

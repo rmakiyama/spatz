@@ -1,8 +1,10 @@
 package com.rmakiyama.spatz.data.di
 
+import com.rmakiyama.spatz.data.RequestTokenSource
 import com.rmakiyama.spatz.data.TwitterAuthTokenSource
 import com.rmakiyama.spatz.data.TwitterSessionSource
 import com.rmakiyama.spatz.data.UserDataSource
+import com.rmakiyama.spatz.data.local.RequestTokenInMemoryDataSource
 import com.rmakiyama.spatz.data.local.TwitterAuthTokenInMemoryDataSource
 import com.rmakiyama.spatz.data.local.UserInMemoryDataSource
 import com.rmakiyama.spatz.data.preference.TwitterSessionPreferencesStorage
@@ -29,6 +31,12 @@ abstract class PersistenceModule {
     internal abstract fun bindLocalTwitterSessionDataSource(
         localDataSource: TwitterSessionPreferencesStorage
     ): TwitterSessionSource
+
+    @Binds
+    @Singleton
+    internal abstract fun bindLocalRequestTokenDataSource(
+        dataSource: RequestTokenInMemoryDataSource
+    ): RequestTokenSource
 
     @Binds
     @Singleton
